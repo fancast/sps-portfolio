@@ -13,16 +13,16 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random song to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function addRandomSong() {
+  const songs =
+      ['Blueberry Faygo - Lil Mosey', 'Stay - Rihanna', 'Circles - Mac Miller', 'Life Is Good - Future, Drake', 'Put On - Jeezy', 'Movement - Hozier', 'Love Yourz - J. Cole'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Pick a random song.
+  const song = songs[Math.floor(Math.random() * songs.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const songContainer = document.getElementById('song-container');
+  songContainer.innerText = song;
 }
