@@ -1,9 +1,32 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+.container {
+    background-color: skyblue;
 }
 
-#greeting-container {
+#page-title {
+    text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  background-color: whitesmoke;
+}
+
+.background-image {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.background-image img {
+    transform: rotate(90deg);
+    max-height: 25.2%;
+    max-width: 18.9%;
+    padding-bottom: 4%;
+    padding-top: 4%;
+}
+
+#song-container {
   margin-top: 20px;
 }
