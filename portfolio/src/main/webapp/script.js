@@ -26,3 +26,9 @@ function addRandomSong() {
   const songContainer = document.getElementById('song-container');
   songContainer.innerText = song;
 }
+
+async function requestData() {
+    const response = await fetch('/data');
+    const text = await response.text();
+    document.getElementById('text-data').innerText = text;
+}
