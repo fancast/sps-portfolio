@@ -37,7 +37,7 @@ function loadJson() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
   .then((comments) => { // now we can reference the fields in myObject!
-    console.log(comments);
-    document.getElementById('comments-container').innerText = comments;
+    console.log(comments.userComment);
+    document.getElementById('comments-container').innerText = comments.userComment;
   });
 }
