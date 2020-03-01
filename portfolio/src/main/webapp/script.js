@@ -17,7 +17,7 @@
  */
 function addRandomSong() {
   const songs =
-      ['Blueberry Faygo - Lil Mosey', 'Stay - Rihanna', 'Circles - Mac Miller', 'Life Is Good - Future, Drake', 'Put On - Jeezy', 'Movement - Hozier', 'Love Yourz - J. Cole'];
+    ['Blueberry Faygo - Lil Mosey', 'Stay - Rihanna', 'Circles - Mac Miller', 'Life Is Good - Future, Drake', 'Put On - Jeezy', 'Movement - Hozier', 'Love Yourz - J. Cole'];
 
   // Pick a random song.
   const song = songs[Math.floor(Math.random() * songs.length)];
@@ -28,7 +28,16 @@ function addRandomSong() {
 }
 
 async function requestData() {
-    const response = await fetch('/data');
-    const text = await response.text();
-    document.getElementById('text-data').innerText = text;
+  const response = await fetch('/data');
+  const text = await response.text();
+  document.getElementById('comments-container').innerText = text;
+}
+
+function loadJson() {
+  fetch('/data')  // sends a request to /data
+  .then(response => response.json()) // parses the response as JSON
+  .then((comments) => { // now we can reference the fields in myObject!
+    console.log(comments);
+    document.getElementById('comments-container').innerText = comments;
+  });
 }
