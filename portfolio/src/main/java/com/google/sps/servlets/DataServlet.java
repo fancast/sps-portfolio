@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.data.UserComments;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -26,11 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> userComments = new ArrayList<String>();
+  private UserComments allComments = new UserComments();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String jsonComments = convertToJson(userComments);
+    String jsonComments = convertToJsonWithGson(allComments);
     response.setContentType("application/json;");
     response.getWriter().println(jsonComments);
   }
@@ -39,17 +40,15 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
     String comment = getParameter(request, "comment-input", "");
-    userComments.add(comment);
+    allComments.addComment(comment);
     response.setContentType("text/html;");
-    response.getWriter().println(userComments);
+    response.getWriter().println(comment);
     response.sendRedirect("/index.html");
   }
 
-  private String convertToJson(ArrayList<String> comments) {
-    String json = "{";
-    json += "\"userComment\": ";
-    json += "\"" + comments + "\"";
-    json += "}";
+  private String convertToJsonWithGson(UserComments comments) {
+    Gson gson = new Gson();
+    String json = gson.toJson(comments);
     return json;
   }
 

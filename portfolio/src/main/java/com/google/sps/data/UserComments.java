@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class UserComments {
 
-  private final ArrayList<String> comments = new ArrayList<String>();
+  private final ArrayList<String> commentsList = new ArrayList<String>();
 
-  private void addComment(String userComment) {
-    comments.add(userComment);
+  public void addComment(String userComment) {
+    commentsList.add(userComment);
   }
 }

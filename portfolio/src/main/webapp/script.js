@@ -37,12 +37,11 @@ function loadCommentsJson() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
   .then((comments) => { // now we can reference the fields in comments!
-    console.log(comments.userComment);
+    console.log(comments);
     const allComments = document.getElementById('comments-container');
-    for(i = 0; i < comments.userComment.length; i++) {
-      allComments.appendChild(createParagraphElement(comments.userComment));
+    for(i = 0; i < comments.commentsList.length; i++) {
+      allComments.appendChild(createParagraphElement(comments.commentsList[i]));
     }
-    //document.getElementById('comments-container').innerText = comments.userComment;
   });
 }
 
