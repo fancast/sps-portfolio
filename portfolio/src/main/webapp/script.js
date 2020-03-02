@@ -33,7 +33,7 @@ async function requestData() {
   document.getElementById('comments-container').innerText = text;
 }
 
-function loadJson() {
+function loadCommentsJson() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
   .then((comments) => { // now we can reference the fields in myObject!
