@@ -26,15 +26,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private ArrayList<String> userComments = new ArrayList<String>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> testComments = new ArrayList<String>();
-    testComments.add("Hello 1st comment");
-    testComments.add("2nd comment");
-    testComments.add("3rd comment!");
-    String jsonComments = convertToJson(testComments);
+    String jsonComments = convertToJson(userComments);
     response.setContentType("application/json;");
     response.getWriter().println(jsonComments);
+  }
+  
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String comment = getParameter(request, "comment-input", "");
+    userComments.add(comment);
+    response.setContentType("text/html;");
+    response.getWriter().println(userComments);
+    response.sendRedirect("/index.html");
   }
 
   private String convertToJson(ArrayList<String> comments) {
@@ -43,5 +51,13 @@ public class DataServlet extends HttpServlet {
     json += "\"" + comments + "\"";
     json += "}";
     return json;
+  }
+
+  private String getParameter(HttpServletRequest request, String comment, String defaultValue) {
+    String value = request.getParameter(comment);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
