@@ -16,6 +16,9 @@ package com.google.sps.servlets;
 
 import com.google.sps.data.UserComments;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +44,12 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String comment = getParameter(request, "comment-input", "");
     allComments.addComment(comment);
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("comment", comment);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+    
     response.setContentType("text/html;");
     response.getWriter().println(comment);
     response.sendRedirect("/index.html");
