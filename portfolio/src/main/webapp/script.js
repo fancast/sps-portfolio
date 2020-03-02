@@ -39,8 +39,8 @@ function loadCommentsJson() {
   .then((comments) => { // now we can reference the fields in comments!
     console.log(comments);
     const allComments = document.getElementById('comments-container');
-    for(i = 0; i < comments.commentsList.length; i++) {
-      allComments.appendChild(createParagraphElement(comments.commentsList[i]));
+    for(i = 0; i < comments.length; i++) {
+      allComments.appendChild(createParagraphElement(comments[i].commentsList));
     }
   });
 }

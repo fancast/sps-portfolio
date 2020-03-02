@@ -4,9 +4,20 @@ import java.util.ArrayList;
 
 public class UserComments {
 
-  private final ArrayList<String> commentsList = new ArrayList<String>();
+  private String commentsList = new String();
+  private long timestamp;
+
+  public UserComments() {
+    this.commentsList = new String();
+    this.timestamp = 0;
+  }
+
+  public UserComments(String commentsList, long timestamp) {
+    this.commentsList = commentsList;
+    this.timestamp = timestamp;
+  }
 
   public void addComment(String userComment) {
-    commentsList.add(userComment);
+    commentsList = userComment;
   }
 }
