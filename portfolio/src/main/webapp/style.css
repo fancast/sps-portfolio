@@ -1,9 +1,9 @@
 .container {
-    background-color: skyblue;
+  background-color: skyblue;
 }
 
 #page-title {
-    text-align: center;
+  text-align: center;
 }
 
 .flex-container {
@@ -14,19 +14,24 @@
 }
 
 .background-image {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .background-image img {
-    transform: rotate(90deg);
-    max-height: 25.2%;
-    max-width: 18.9%;
-    padding-bottom: 4%;
-    padding-top: 4%;
+  transform: rotate(90deg);
+  max-height: 25.2%;
+  max-width: 18.9%;
+  padding-bottom: 4%;
+  padding-top: 4%;
 }
 
 #song-container {
   margin-top: 20px;
+}
+
+#map {
+  height: 500px;
+  width: 500px;
 }
