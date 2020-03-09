@@ -60,7 +60,6 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
     String comment = getParameter(request, "comment-input", "");
-    allComments.addComment(comment);
     long timestamp = System.currentTimeMillis();
 
     Entity commentEntity = new Entity("Comment");

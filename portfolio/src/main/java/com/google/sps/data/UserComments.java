@@ -17,7 +17,4 @@ public class UserComments {
     this.timestamp = timestamp;
   }
 
-  public void addComment(String userComment) {
-    commentsList = userComment;
-  }
 }
