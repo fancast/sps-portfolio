@@ -34,8 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private UserComments allComments = new UserComments();
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
