@@ -33,11 +33,26 @@ async function requestData() {
   document.getElementById('comments-container').innerText = text;
 }
 
-function loadJson() {
+function loadCommentsJson() {
   fetch('/data')  // sends a request to /data
   .then(response => response.json()) // parses the response as JSON
-  .then((comments) => { // now we can reference the fields in myObject!
-    console.log(comments.userComment);
-    document.getElementById('comments-container').innerText = comments.userComment;
+  .then((comments) => { // now we can reference the fields in comments!
+    console.log(comments);
+    const allComments = document.getElementById('comments-container');
+    for(i = 0; i < comments.length; i++) {
+      allComments.appendChild(createParagraphElement(comments[i].commentsList));
+    }
   });
+}
+
+function createParagraphElement(text) {
+  const pElement = document.createElement('p');
+  pElement.innerText = text;
+  return pElement;
+}
+
+function createMap() {
+  const map = new google.maps.Map(
+    document.getElementById('map'),
+    {center: {lat: 37.422, lng: -122.084}, zoom: 16});
 }
